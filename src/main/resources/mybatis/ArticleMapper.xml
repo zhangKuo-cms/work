@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.lumengjun.dao.ArticleMapper">
+  
+ 	<select id="getArticleList" resultType="com.lumengjun.entity.Article">
+ 	SELECT * FROM cms_article WHERE 1=1 
+     <if test="date2!=''">
+ 	AND created &lt; #{date2}
+ 	</if> 
+ 	<if test="date1!=''">
+ 	AND created>#{date1}
+ 	</if>
+ 	
+ 	<if test="dtj!=''">
+ 	ORDER BY #{dtj} DESC
+ 	</if> 
+ 	</select>
+  
+  
+  </mapper>
+  
